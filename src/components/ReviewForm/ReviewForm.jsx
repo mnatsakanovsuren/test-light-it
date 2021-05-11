@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
-import {Link, useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const ReviewForm = ({id, setUpdate}) => {
   const [review, setReview] = useState('');
   const [rate, setRate] = useState(0);
   const [error, setError] = useState(false);
-
-  const history = useHistory();
 
   const handleChange = (event) => {
     setReview(event.target.value)
@@ -30,7 +28,7 @@ const ReviewForm = ({id, setUpdate}) => {
       }).then(() => {
         setRate(0);
         setReview('');
-        history.go(0);
+        window.location.reload();
       })
     } catch(err) {
       setError(true)
