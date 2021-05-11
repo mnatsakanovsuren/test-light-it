@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
+import {useHistory} from "react-router-dom";
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  let history = useHistory();
 
   const registerUser = async (credentials) => {
     return fetch('http://smktesting.herokuapp.com/api/register/', {
@@ -25,28 +28,27 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await registerUser({username, password});
-    console.log(response);
     if (response.ok) {
-      window.location.href = '/login';
+      history.push("/login");
     }
   }
 
   return (
-    <div>
-      <h1>Register</h1>
-      <form>
-        <label htmlFor="username">
+    <section className="register section">
+      <h1 className="register__title">Register</h1>
+      <form  className="register__form form">
+        <label className="register__form__item form__item" htmlFor="username">
           Username
-          <input onChange={handleUsername} value={username} id="username" type="text"/>
+          <input className="register__form__input form__input" onChange={handleUsername} value={username} id="username" type="text"/>
         </label>
-        <label htmlFor="password">
+        <label className="register__form__item form__item" htmlFor="password">
           Password
-          <input onChange={handlePassword} value={password} id="password" type="password"/>
+          <input className="register__form__input form__input" onChange={handlePassword} value={password} id="password" type="password"/>
         </label>
-        <button type="submit" onClick={handleSubmit}>Login</button>
+        <button className="form__button" type="submit" onClick={handleSubmit}>Register</button>
 
       </form>
-    </div>
+    </section>
   );
 };
 

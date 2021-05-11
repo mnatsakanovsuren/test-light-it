@@ -32,6 +32,7 @@ const Login = ({ setToken }) => {
     const response = await loginUser({username, password});
     if (response.success) {
       setToken(response.token);
+      localStorage.setItem('token', response.token);
       history.push("/home");
     } else {
       setError(true)
@@ -39,22 +40,22 @@ const Login = ({ setToken }) => {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form>
-        <label htmlFor="username">
+    <section className="login section">
+      <h1 className="login__title">Login</h1>
+      <form className="login__form form">
+        <label className="login__form__item form__item" htmlFor="username">
           Username
-          <input onChange={handleUsername} value={username} id="username" type="text"/>
+          <input className="form__input" onChange={handleUsername} value={username} id="username" type="text"/>
         </label>
-        <label htmlFor="password">
+        <label className="login__form__item form__item" htmlFor="password">
            Password
-          <input onChange={handlePassword} value={password} id="password" type="password"/>
+          <input className="form__input" onChange={handlePassword} value={password} id="password" type="password"/>
         </label>
-        <button type="submit" onClick={handleSubmit}>Login</button>
+        <button className="form__button" type="submit" onClick={handleSubmit}>Login</button>
+        {error && <p className="login__error form__error">wrong login or password, please try again with another data</p>}
       </form>
-      {error && <p>wrong login or password, please try again with another data</p>}
-      <p>if don't have login - <Link to="/register">registration</Link></p>
-    </div>
+      <p>If you don't have login - click <Link to="/register">registration</Link></p>
+    </section>
   );
 };
 
