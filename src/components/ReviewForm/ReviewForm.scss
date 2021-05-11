@@ -31,6 +31,9 @@
     outline: none;
     &:focus {}
   }
+  &__login-link {
+    text-decoration: underline;
+  }
   &__error {
     position: absolute;
     left: 0;

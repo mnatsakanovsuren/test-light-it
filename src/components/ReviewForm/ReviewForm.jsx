@@ -20,7 +20,7 @@ const ReviewForm = ({id, setUpdate}) => {
     event.preventDefault();
     let result = {product: id, rate: +rate, text: review, username: 'test'};
     try {
-      await fetch(`http://smktesting.herokuapp.com/api/reviews/${id}`, {
+      await fetch(`https://smktesting.herokuapp.com/api/reviews/${id}`, {
         method: 'POST',
         body: JSON.stringify(result),
         headers: {
@@ -76,7 +76,7 @@ const ReviewForm = ({id, setUpdate}) => {
         </label>
         {localStorage.getItem('token')
           ? <button type="submit" className="form__button" disabled={rate === 0 || review === ''}>Send Review</button>
-          : <p>You need <Link to="/login">login</Link> for add review</p>
+          : <p>You need <Link to="/login" className="review-form__login-link">login</Link> for add review</p>
         }
         {error && <p className="review-form__error">Something went wrong...</p>}
       </form>

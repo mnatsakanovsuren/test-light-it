@@ -9,7 +9,7 @@ const Login = ({ setToken }) => {
   let history = useHistory();
 
   const loginUser = async (credentials) => {
-    return fetch('http://smktesting.herokuapp.com/api/login/', {
+    return fetch('https://smktesting.herokuapp.com/api/login/', {
       method: 'POST',
       body: JSON.stringify(credentials),
       headers: {

@@ -8,7 +8,7 @@ const Register = () => {
   let history = useHistory();
 
   const registerUser = async (credentials) => {
-    return fetch('http://smktesting.herokuapp.com/api/register/', {
+    return fetch('https://smktesting.herokuapp.com/api/register/', {
       method: 'POST',
       body: JSON.stringify(credentials),
       headers: {
