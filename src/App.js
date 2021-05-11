@@ -12,7 +12,7 @@ function App() {
   const [products, setProducts] = useState();
 
   useEffect(() => {
-    fetch('http://smktesting.herokuapp.com/api/products/')
+    fetch('https://smktesting.herokuapp.com/api/products/')
       .then(res => res.json())
       .then((res) => setProducts(res));
   }, []);
